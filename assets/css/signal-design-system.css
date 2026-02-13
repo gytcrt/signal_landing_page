@@ -76,8 +76,8 @@ html {
 
 body {
   font-family: var(--sa-font-family);
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.65;
   color: var(--sa-text-main);
   background-color: var(--sa-bg-white);
   -webkit-font-smoothing: antialiased;
@@ -162,13 +162,13 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: auto;
-  height: auto;
+  min-height: calc(100vh - 72px);
   width: 100%;
   padding: var(--sa-hero-padding) 24px;
   text-align: center;
   border-bottom: 1px solid var(--sa-border);
   margin-bottom: 0;
+  box-sizing: border-box;
 }
 
 #site-head .vertical {
@@ -305,11 +305,12 @@ a:hover {
   padding-top: var(--sa-section-padding);
   padding-bottom: var(--sa-section-padding);
   height: auto;
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.65;
   word-break: normal;
   hyphens: none;
   scroll-margin-top: 80px;
+  box-sizing: border-box;
 }
 
 .post-header {
@@ -331,8 +332,8 @@ a:hover {
 .post-content p,
 .post-content li {
   color: var(--sa-text-muted);
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.65;
 }
 
 .post-content ol {
@@ -341,7 +342,7 @@ a:hover {
 
 .post-content ol li {
   margin-left: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .post-content ul {
@@ -351,7 +352,7 @@ a:hover {
 
 .post-content ul li {
   margin-left: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 /* -----------------------------------------------------------
@@ -558,6 +559,12 @@ code, tt {
   .sa-header.menu-open .sa-menu-toggle span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
+
+  /* Full-screen hero adjusts for shorter mobile header */
+  #site-head,
+  #site-head.withCenteredImage {
+    min-height: calc(100vh - 64px);
+  }
 }
 
 /* -----------------------------------------------------------
@@ -604,13 +611,24 @@ code, tt {
     padding: var(--sa-hero-padding) 20px;
   }
 
+  body {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
   .post {
     width: auto;
     margin-left: 20px;
     margin-right: 20px;
-    font-size: 16px;
+    font-size: 17px;
     padding-top: var(--sa-section-padding);
     padding-bottom: var(--sa-section-padding);
+  }
+
+  .post-content p,
+  .post-content li {
+    font-size: 17px;
+    line-height: 1.65;
   }
 
   .post-title {
