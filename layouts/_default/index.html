@@ -27,14 +27,6 @@
 </header>
 
 <main class="content" role="main">
-    <!-- Sticky navigation -->
-    <div class='fixed-nav'>
-        {{ range $index_val, $elem_val := $content }}
-            {{ $fnav_title := .Title }}{{ with .Params.navigation_menu_title }}{{ $fnav_title = . }}{{ end }}
-            <a class='fn-item' item_index='{{ (add $index_val 1) }}' href='#{{ anchorize $fnav_title }}'>{{ $fnav_title | safeHTML }}</a>
-        {{ end }}
-    </div>
-
     <!-- Content sections -->
     {{ range $index_val, $elem_val := $content }}
         {{ if .Title }}

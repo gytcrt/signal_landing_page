@@ -1,1 +1,26 @@
-{{/* Intentionally empty — header is rendered in index.html */}}
+{{ $headless := .Site.GetPage "/homepage" }}
+{{ $sections := $headless.Resources.ByType "page" }}
+{{ $nav_items := where $sections "Params.header_nav_title" "ne" nil }}
+
+<nav class="sa-header" role="navigation" aria-label="Main navigation">
+  <div class="sa-header-inner">
+    <a href="{{ "/" | relLangURL }}" class="sa-logo">Signal</a>
+
+    <button class="sa-menu-toggle" aria-label="Toggle menu" aria-expanded="false"
+      onclick="var h=this.closest('.sa-header');h.classList.toggle('menu-open');this.setAttribute('aria-expanded',h.classList.contains('menu-open'))">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="sa-nav">
+      {{ range $nav_items }}
+        {{ $anchor := .Title }}{{ with .Params.navigation_menu_title }}{{ $anchor = . }}{{ end }}
+        <a href="#{{ anchorize $anchor }}" class="sa-nav-link"
+          onclick="var h=this.closest('.sa-header');if(h)h.classList.remove('menu-open')">
+          {{ .Params.header_nav_title }}
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</nav>

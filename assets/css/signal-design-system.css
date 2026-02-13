@@ -309,6 +309,7 @@ a:hover {
   line-height: 1.6;
   word-break: normal;
   hyphens: none;
+  scroll-margin-top: 80px;
 }
 
 .post-header {
@@ -354,32 +355,86 @@ a:hover {
 }
 
 /* -----------------------------------------------------------
-   STICKY NAVIGATION
+   SITE HEADER
    ----------------------------------------------------------- */
+/* Hide old theme sticky navigation (replaced by .sa-header) */
 .fixed-nav {
+  display: none !important;
+}
+
+.sa-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background-color: var(--sa-bg-white);
-  border-radius: 0;
-  border-right: 1px solid var(--sa-border);
-  padding: 16px 20px;
+  border-bottom: 1px solid var(--sa-border);
+  height: 72px;
+}
+
+.sa-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sa-logo {
   font-family: var(--sa-font-family);
-  font-size: 13px;
-  font-weight: 500;
-  text-transform: none;
-  line-height: 2;
-  letter-spacing: 0;
-}
-
-a.fn-item {
-  color: var(--sa-text-muted);
-  font-size: 13px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--sa-deep-navy);
   text-decoration: none;
-  opacity: 1;
+  line-height: 1;
 }
 
-a.fn-item:hover,
-a.fn-item.active {
-  color: var(--sa-deep-navy) !important;
-  opacity: 1;
+.sa-logo:hover {
+  color: var(--sa-deep-navy);
+}
+
+.sa-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.sa-nav-link {
+  font-family: var(--sa-font-family);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--sa-deep-navy);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sa-nav-link:hover {
+  color: var(--sa-muted-blue);
+}
+
+/* Hamburger toggle — hidden on desktop */
+.sa-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 32px;
+  height: 32px;
+}
+
+.sa-menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background-color: var(--sa-deep-navy);
+  border-radius: 1px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 /* -----------------------------------------------------------
@@ -450,38 +505,65 @@ code, tt {
 }
 
 /* -----------------------------------------------------------
+   RESPONSIVE — MOBILE HEADER (≤ 768px)
+   ----------------------------------------------------------- */
+@media only screen and (max-width: 768px) {
+  .sa-header {
+    height: 64px;
+  }
+
+  .sa-nav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--sa-bg-white);
+    border-bottom: 1px solid var(--sa-border);
+    flex-direction: column;
+    padding: 8px 24px;
+    gap: 0;
+  }
+
+  .sa-header.menu-open .sa-nav {
+    display: flex;
+  }
+
+  .sa-nav-link {
+    padding: 14px 0;
+    font-size: 15px;
+    border-bottom: 1px solid var(--sa-border);
+    width: 100%;
+  }
+
+  .sa-nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .sa-menu-toggle {
+    display: flex;
+  }
+
+  /* Hamburger → X on open */
+  .sa-header.menu-open .sa-menu-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .sa-header.menu-open .sa-menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .sa-header.menu-open .sa-menu-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+/* -----------------------------------------------------------
    RESPONSIVE — TABLET / SMALL DESKTOP (≤ 1130px)
    ----------------------------------------------------------- */
 @media only screen and (max-width: 1130px) {
-  .fixed-nav {
-    background-color: var(--sa-bg-white);
-    border-radius: 0;
-    border-bottom: 1px solid var(--sa-border);
-    border-right: none;
-    font-size: 12px;
-    padding: 8px 16px;
-    text-transform: none;
-    font-family: var(--sa-font-family);
-    font-weight: 500;
-    line-height: 1.4;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
-    max-width: 100vw;
-    box-sizing: border-box;
-  }
-
-  a.fn-item {
-    font-size: 12px;
-    margin-left: 8px;
-  }
-
   .post-holder {
     padding-top: 0;
-  }
-
-  .post-holder .post {
-    scroll-margin-top: 44px;
   }
 
   .blog-title {

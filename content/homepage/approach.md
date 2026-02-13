@@ -1,6 +1,7 @@
 ---
 title: "From interaction data to operational leverage."
 weight: 2
+header_nav_title: "Approach"
 ---
 
 1. Ingest interaction data across calls, chats, and tickets.  
