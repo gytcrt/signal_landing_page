@@ -1,0 +1,8 @@
+<!-- Inter font from Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Signal Analytics Design System (loaded after theme CSS to override) -->
+{{ $customCSS := resources.Get "css/signal-design-system.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" type="text/css" integrity="{{ $customCSS.Data.Integrity }}" />

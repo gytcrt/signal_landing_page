@@ -1,0 +1,55 @@
+{{ define "main" }}
+{{ $headless := .GetPage "./homepage" }}
+{{ if hugo.IsMultihost }}
+  {{ $headless := .Site.GetPage "/homepage" }}
+{{ end }}
+{{ $sections := $headless.Resources.ByType "page" }}
+{{ $sections := cond .Site.BuildDrafts $sections (where $sections "Draft" "==" false) }}
+{{ $content := where (where $sections "Params.external" "==" nil) "Params.detailed_page_homepage_content" "ne" false }}
+
+<!-- Hero -->
+<header id="site-head">
+    <div class="vertical">
+        <div id="site-head-content" class="inner">
+            {{ with .Params.header_headline }}<h1 class="blog-title">{{ . | safeHTML }}</h1>{{ end }}
+            {{ with .Params.header_subheadline }}<h2 class="blog-description">{{ . | safeHTML }}</h2>{{ end }}
+
+            <div class="hero-actions">
+                {{ with .Params.header_cta_text }}
+                <a class="btn-primary" href="{{ $.Params.header_cta_url | default "#" }}">{{ . }}</a>
+                {{ end }}
+                {{ with .Params.header_cta_secondary_text }}
+                <a class="btn-secondary" href="{{ $.Params.header_cta_secondary_url | default "#" }}">{{ . }}</a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="content" role="main">
+    <!-- Sticky navigation -->
+    <div class='fixed-nav'>
+        {{ range $index_val, $elem_val := $content }}
+            {{ $fnav_title := .Title }}{{ with .Params.navigation_menu_title }}{{ $fnav_title = . }}{{ end }}
+            <a class='fn-item' item_index='{{ (add $index_val 1) }}' href='#{{ anchorize $fnav_title }}'>{{ $fnav_title | safeHTML }}</a>
+        {{ end }}
+    </div>
+
+    <!-- Content sections -->
+    {{ range $index_val, $elem_val := $content }}
+        {{ if .Title }}
+        {{ $fnav_title := .Title }}{{ with .Params.navigation_menu_title }}{{ $fnav_title = . }}{{ end }}
+        <div class='post-holder{{ if not (modBool $index_val 2) }} dark{{ end }}'>
+            <article id='{{ anchorize $fnav_title }}' class='post {{ if eq $index_val 0 }}first{{ end }} {{ if eq (add $index_val 1) (len $content) }}last{{ end }}'>
+                <header class="post-header">
+                    <h2 class="post-title">{{ .Title | safeHTML }}</h2>
+                </header>
+                <section class="post-content">
+                    {{ .Content }}
+                </section>
+            </article>
+        </div>
+        {{ end }}
+    {{ end }}
+</main>
+{{ end }}

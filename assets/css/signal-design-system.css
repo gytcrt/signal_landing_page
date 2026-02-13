@@ -1,0 +1,557 @@
+/* ============================================================
+   Signal Analytics — Design System
+   ============================================================
+   All design tokens are defined in the :root block below.
+   To adjust colors, spacing, or typography site-wide,
+   edit ONLY the custom properties here.
+   ============================================================ */
+
+/* -----------------------------------------------------------
+   DESIGN TOKENS
+   ----------------------------------------------------------- */
+:root {
+  /* Primary palette */
+  --sa-deep-navy: #0F172A;
+  --sa-dark-slate: #1E293B;
+
+  /* Accent — use sparingly (links, subtle emphasis) */
+  --sa-muted-blue: #1D4ED8;
+
+  /* Text */
+  --sa-text-main: #0F172A;
+  --sa-text-muted: #475569;
+
+  /* Backgrounds */
+  --sa-bg-white: #FFFFFF;
+  --sa-bg-alt: #F8FAFC;
+
+  /* Borders / Dividers */
+  --sa-border: #E2E8F0;
+
+  /* Typography */
+  --sa-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Spacing */
+  --sa-section-padding: 96px;
+  --sa-hero-padding: 120px;
+  --sa-container-max-width: 1140px;
+  --sa-text-max-width: 720px;
+
+  /* Buttons */
+  --sa-btn-radius: 6px;
+  --sa-btn-padding: 14px 28px;
+
+  /* ---- Override theme CSS variables to prevent color leakage ---- */
+  --cover-text-color: var(--sa-text-main);
+  --highlight: var(--sa-deep-navy);
+  --highlight-contrast: #FFFFFF;
+  --highlight-inverse: var(--sa-dark-slate);
+  --highlight-inverse-contrast: #FFFFFF;
+  --cover-title-and-description-guard-bg-color: transparent;
+  --cover-title-text-shadow: none;
+  --sticky-menu-text-color: var(--sa-muted-blue);
+  --section-light-text-color: var(--sa-text-main);
+  --section-light-bg-color: var(--sa-bg-white);
+  --section-dark-text-color: var(--sa-text-main);
+  --section-dark-bg-color: var(--sa-bg-alt);
+  --section-uni-quote: var(--sa-text-muted);
+  --section-uni-code-bg-color: var(--sa-bg-alt);
+  --footer-color-background: var(--sa-bg-white);
+  --footer-color: var(--sa-text-muted);
+  --single-page-text-color: var(--sa-text-main);
+  --single-page-bg-color: var(--sa-bg-white);
+
+  /* Disable theme's FA list icon injection */
+  --ul-li-icon: ;
+}
+
+/* -----------------------------------------------------------
+   BASE TYPOGRAPHY
+   ----------------------------------------------------------- */
+html {
+  font-size: 100%;           /* Reset from theme's 62.5% to 16px = 1rem */
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--sa-font-family);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--sa-text-main);
+  background-color: var(--sa-bg-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sa-font-family);
+  color: var(--sa-text-main);
+  letter-spacing: -0.01em;
+  text-indent: 0;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+p {
+  margin: 1em 0;
+}
+
+/* -----------------------------------------------------------
+   LINKS
+   ----------------------------------------------------------- */
+a {
+  color: var(--sa-muted-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--sa-deep-navy);
+}
+
+/* -----------------------------------------------------------
+   SELECTION
+   ----------------------------------------------------------- */
+::selection {
+  background: #DBEAFE;
+  color: var(--sa-text-main);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: #DBEAFE;
+  color: var(--sa-text-main);
+  text-shadow: none;
+}
+
+/* -----------------------------------------------------------
+   HERO
+   ----------------------------------------------------------- */
+#site-head,
+#site-head.withCenteredImage {
+  background: var(--sa-bg-white) !important;
+  background-image: none !important;
+  color: var(--sa-text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: auto;
+  height: auto;
+  width: 100%;
+  padding: var(--sa-hero-padding) 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--sa-border);
+  margin-bottom: 0;
+}
+
+#site-head .vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: var(--sa-container-max-width);
+}
+
+#site-head-content {
+  max-width: var(--sa-text-max-width);
+}
+
+/* Hide logo image */
+#blog-logo {
+  display: none !important;
+}
+
+.blog-title {
+  font-family: var(--sa-font-family) !important;
+  font-size: 52px !important;
+  font-weight: 600 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
+  text-shadow: none !important;
+  color: var(--sa-text-main);
+  margin: 0 0 16px 0 !important;
+}
+
+.blog-description {
+  font-family: var(--sa-font-family) !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  text-shadow: none !important;
+  color: var(--sa-text-muted);
+  max-width: 600px;
+  margin: 0 auto !important;
+  letter-spacing: 0 !important;
+}
+
+/* Hide scroll arrow */
+#header-arrow {
+  display: none !important;
+}
+
+/* Hide theme header menu buttons (replaced by hero-actions) */
+#site-head a.btn.site-menu {
+  display: none !important;
+}
+
+/* -----------------------------------------------------------
+   HERO BUTTONS
+   ----------------------------------------------------------- */
+.hero-actions {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--sa-deep-navy);
+  color: #FFFFFF;
+  font-family: var(--sa-font-family);
+  font-size: 15px;
+  font-weight: 500;
+  padding: var(--sa-btn-padding);
+  border-radius: var(--sa-btn-radius);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--sa-dark-slate);
+  color: #FFFFFF;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--sa-deep-navy);
+  font-family: var(--sa-font-family);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 13px 27px;
+  border-radius: var(--sa-btn-radius);
+  border: 1px solid var(--sa-deep-navy);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--sa-bg-alt);
+  color: var(--sa-deep-navy);
+}
+
+/* -----------------------------------------------------------
+   CONTENT SECTIONS
+   ----------------------------------------------------------- */
+.post-holder {
+  background-color: var(--sa-bg-white);
+  color: var(--sa-text-main);
+  border-bottom: 1px solid var(--sa-border);
+  position: relative;
+  padding-top: 0;
+}
+
+.post-holder.dark {
+  background-color: var(--sa-bg-alt) !important;
+  color: var(--sa-text-main) !important;
+}
+
+/* Remove ALL triangular dividers */
+.post-holder .post-after,
+.post-holder.dark .post-after {
+  display: none !important;
+}
+
+.post {
+  max-width: var(--sa-text-max-width);
+  width: 90%;
+  margin: 0 auto;
+  padding-top: var(--sa-section-padding);
+  padding-bottom: var(--sa-section-padding);
+  height: auto;
+  font-size: 17px;
+  line-height: 1.6;
+  word-break: normal;
+  hyphens: none;
+}
+
+.post-header {
+  margin-bottom: 24px;
+  padding: 0;
+}
+
+.post-title {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--sa-text-main) !important;
+}
+
+.post-content {
+  color: var(--sa-text-main);
+}
+
+.post-content p,
+.post-content li {
+  color: var(--sa-text-muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.post-content ol {
+  padding-left: 0;
+}
+
+.post-content ol li {
+  margin-left: 24px;
+  margin-bottom: 8px;
+}
+
+.post-content ul {
+  list-style: disc;
+  padding-left: 0;
+}
+
+.post-content ul li {
+  margin-left: 24px;
+  margin-bottom: 8px;
+}
+
+/* -----------------------------------------------------------
+   STICKY NAVIGATION
+   ----------------------------------------------------------- */
+.fixed-nav {
+  background-color: var(--sa-bg-white);
+  border-radius: 0;
+  border-right: 1px solid var(--sa-border);
+  padding: 16px 20px;
+  font-family: var(--sa-font-family);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: none;
+  line-height: 2;
+  letter-spacing: 0;
+}
+
+a.fn-item {
+  color: var(--sa-text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  opacity: 1;
+}
+
+a.fn-item:hover,
+a.fn-item.active {
+  color: var(--sa-deep-navy) !important;
+  opacity: 1;
+}
+
+/* -----------------------------------------------------------
+   FOOTER
+   ----------------------------------------------------------- */
+.site-footer {
+  background: var(--sa-bg-white);
+  color: var(--sa-text-muted);
+  font-family: var(--sa-font-family);
+  font-size: 14px;
+  border-top: 1px solid var(--sa-border);
+  padding: 40px 24px;
+  line-height: 1.6;
+}
+
+.site-footer a {
+  color: var(--sa-text-muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--sa-muted-blue);
+}
+
+/* -----------------------------------------------------------
+   UNDO THEME JS — FA LIST ICONS + BLOCKQUOTE QUOTES
+   ----------------------------------------------------------- */
+/* Theme JS adds .fa-ul class and .fa-li icon spans to all <ul> */
+ul.fa-ul {
+  list-style: disc;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.fa-li {
+  display: none !important;
+}
+
+/* Theme JS prepends/appends .quo FA quote icons to blockquote p */
+.quo {
+  display: none !important;
+}
+
+/* -----------------------------------------------------------
+   HORIZONTAL RULES
+   ----------------------------------------------------------- */
+hr {
+  border-color: var(--sa-border);
+  border-top: 1px solid var(--sa-border);
+}
+
+/* -----------------------------------------------------------
+   CODE & BLOCKQUOTES
+   ----------------------------------------------------------- */
+blockquote {
+  border-left: 3px solid var(--sa-border);
+  margin: 1.5em 0;
+  padding: 0 0 0 1.25em;
+  color: var(--sa-text-muted);
+}
+
+code, tt {
+  font-size: 0.9em;
+  background-color: var(--sa-bg-alt);
+  color: var(--sa-text-main);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+/* -----------------------------------------------------------
+   RESPONSIVE — TABLET / SMALL DESKTOP (≤ 1130px)
+   ----------------------------------------------------------- */
+@media only screen and (max-width: 1130px) {
+  .fixed-nav {
+    background-color: var(--sa-bg-white);
+    border-radius: 0;
+    border-bottom: 1px solid var(--sa-border);
+    border-right: none;
+    font-size: 12px;
+    padding: 8px 16px;
+    text-transform: none;
+    font-family: var(--sa-font-family);
+    font-weight: 500;
+    line-height: 1.4;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  a.fn-item {
+    font-size: 12px;
+    margin-left: 8px;
+  }
+
+  .post-holder {
+    padding-top: 0;
+  }
+
+  .post-holder .post {
+    scroll-margin-top: 44px;
+  }
+
+  .blog-title {
+    font-size: 40px !important;
+  }
+
+  .blog-description {
+    font-size: 18px !important;
+  }
+
+  #site-head,
+  #site-head.withCenteredImage {
+    padding: 80px 24px;
+  }
+}
+
+/* -----------------------------------------------------------
+   RESPONSIVE — MOBILE (≤ 600px)
+   ----------------------------------------------------------- */
+@media only screen and (max-width: 600px) {
+  :root {
+    --sa-section-padding: 64px;
+    --sa-hero-padding: 80px;
+  }
+
+  .blog-title {
+    font-size: 32px !important;
+  }
+
+  .blog-description {
+    font-size: 17px !important;
+  }
+
+  #site-head,
+  #site-head.withCenteredImage {
+    padding: var(--sa-hero-padding) 20px;
+  }
+
+  .post {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 16px;
+    padding-top: var(--sa-section-padding);
+    padding-bottom: var(--sa-section-padding);
+  }
+
+  .post-title {
+    font-size: 26px;
+  }
+
+  h1 { font-size: 32px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 19px; }
+  h4 { font-size: 17px; }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  .site-footer {
+    font-size: 13px;
+    padding: 32px 20px;
+  }
+}

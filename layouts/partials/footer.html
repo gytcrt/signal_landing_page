@@ -1,0 +1,9 @@
+<footer class="site-footer">
+  <div class="inner">
+    {{ with .Site.Params.copyright }}
+      <section class="copyright">{{ . | safeHTML }}</section>
+    {{ else }}
+      <section class="copyright">&copy; {{ now.Format "2006" }} {{ .Site.Title }}</section>
+    {{ end }}
+  </div>
+</footer>
