@@ -366,19 +366,21 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 1000;
+  width: 100%;
   background-color: var(--sa-bg-white);
   border-bottom: 1px solid var(--sa-border);
   height: 72px;
+  box-sizing: border-box;
 }
 
 .sa-header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+  width: 100%;
+  padding: 0 40px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .sa-logo {
