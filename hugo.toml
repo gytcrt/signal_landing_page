@@ -1,0 +1,10 @@
+baseURL = 'https://signalanalytics.co'
+languageCode = 'en-us'
+title = "Signal Analytics"
+theme = "hugo-scroll"
+
+disableKinds = ["section", "taxonomy", "term", "RSS", "robotsTXT"]
+
+[params]
+  description = "Operational intelligence for scaled customer operations."
+  favicon = "images/favicon.png"
