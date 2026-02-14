@@ -6,5 +6,10 @@ theme = "hugo-scroll"
 disableKinds = ["section", "taxonomy", "term", "RSS", "robotsTXT"]
 
 [params]
-  description = "Operational intelligence for scaled customer operations."
+  description = "Signal Analytics helps customer operations leaders understand the behavioral drivers behind efficiency, recontacts, and service performance."
+  images = ["images/og-image.png"]
   favicon = "images/favicon.png"
+
+[sitemap]
+  changeFreq = "monthly"
+  priority = 0.5

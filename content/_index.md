@@ -1,4 +1,5 @@
 ---
+title: "Signal Analytics | Operational Intelligence for Customer Operations"
 header_headline: "Signal Analytics"
 header_subheadline: "Quantify the efficiency–quality tradeoff in customer operations."
 header_cta_text: "Get in touch"
